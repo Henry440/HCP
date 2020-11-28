@@ -10,7 +10,9 @@ class network():
     def send(self, data):
         self.init = True
         self.type = 1
+        return pickle.dumps(data)
 
     def recive(self, data):
         self.init = True
         self.type = 2
+        return pickle.loads(data)

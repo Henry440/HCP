@@ -30,3 +30,6 @@ class cmd:
         self.targetid = targetid
         self.cmd = cmd
         self.args = args
+
+    def get_args(self):
+        return self.args

@@ -1,5 +1,12 @@
-# Homesystem
-Das Homesystem soll ein Client - Server Protokoll im Heimnetz sein, welches ermöglichen soll Daten Lokal zu übertragen. 
+# HCP Home Communication Protocoll
+Dies ist ein Protololl über das Systeme im Heimnetzwerk kommuniziernen können.
 
-## Der Server
-Der eingesetzte Server soll ein Raspberry Pi 3B+ sein. Sprich das ganze System soll möglichst wenig Resourcen Verbrauchen
+## Geplante Funktionen
+- Transfer von Dateien
+- P2P Audioübertragung
+- Verschlüsselter Chat P2P, Gruppe
+- Zeiterfassung
+- Beschränkte Remotekontrolle, z.B. PC Neustarten, Herrunterfahren, WOL
+
+## Hinweise
+Dies sollte nicht Außerhalb von Privaten Netzwerken genutzt werden, da pickle verwendet wird

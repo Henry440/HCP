@@ -9,3 +9,6 @@ SERVER_PORT = 5511
 #STATICS !DONT TOUCH THIS
 VERSION = 1
 AUTHOR = "Henry440"
+
+#Protokoll
+WHITELIST_CMD = ("ping", "register")

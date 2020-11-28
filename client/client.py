@@ -3,16 +3,35 @@
 #From Project
 from configs import C_KEY_FILE
 
-def init():
-    try:
-        file = open(C_KEY_FILE, "r")
-        data = file.read()
-    except FileNotFoundError as e:
-        print("ERSTELLE DIE DATEI")
+class client():
+
+    def __init__(self):
+        self.uname = ""
+        self.id = -1
+        self.connected = False
+        self._set_data()
+        print(self.uname)
+        print(self.id)
+
+    def go_online(self):
+        pass
+
+    def _new_device(self):
+        print("Neuer Client")
         print("Dein Username : ")
-        uname = input("> ")
+        self.uname = input("> ")
         print("Deine ID : ") #TODO SPäter von Server
-        id = input("> ")
-        file = open(C_KEY_FILE, "a")
-        file.write(uname + "\n")
-        file.write(id + "\n")
+        self.id = int(input("> "))
+        with open(C_KEY_FILE, "a") as file:
+            file.write(self.uname + "\n")
+            file.write(str(self.id))
+
+    def _set_data(self):
+        try:
+            with open(C_KEY_FILE, "r") as file:
+                datas = file.read().split("\n")
+                self.uname = datas[0]
+                self.id = int(datas[1])
+        except FileNotFoundError:
+            self._new_device()
+

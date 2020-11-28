@@ -1,6 +1,6 @@
 #Libarys
 
 #From Project
-from client import client as c
+from client.client import client
 
-c.init()
+c = client()

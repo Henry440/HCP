@@ -19,11 +19,7 @@ class cmd:
         assert senderid > 0 or (senderid == -1 and cmd in WHITELIST_CMD), "Senderid ist Ungültig"
         assert targetid >= 0, "Targetid ungültig"
         #Content Check
-        assert len(cmd.split(" ")) > 1, "Der Command darf kein Leerzeichen Enthalten"
-        
-        #ARGS zu String
-        for i in range(len(args)):
-            args[i] = str(args[i])
+        assert len(cmd.split(" ")) != 0, "Der Command darf kein Leerzeichen Enthalten"
 
         self.senderip = senderip
         self.senderid = senderid

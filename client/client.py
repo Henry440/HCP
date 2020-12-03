@@ -1,8 +1,8 @@
 #Libarys
-
+import socket
 #From Project
 from configs import C_KEY_FILE
-from protocol.command import cmd
+from protocol.command import cmd as cmds
 from protocol.worker import network
 
 class client():
@@ -17,7 +17,7 @@ class client():
         print(self.id)
 
     def _server_request(self, targetid, cmd, args):
-        command = cmd(self.ip, self.id, targetid, cmd, args)
+        command = cmds(self.ip, self.id, targetid, cmd, args)
         senddata = network().send(command)
 
         return command
@@ -26,12 +26,21 @@ class client():
         print("Neuer Client")
         print("Dein Username : ")
         self.uname = input("> ")
-        print("Deine ID : ") #TODO SPäter von Server
+        self._connection()
         answer = self._server_request(0, "register", (self.uname, self.ip))
-        self.id = answer.get_args()[0]
+        #self.id = answer.get_args()[0]
+        self.id = 1
         with open(C_KEY_FILE, "a") as file:
             file.write(self.uname + "\n")
             file.write(str(self.id))
+
+    def _connection(self):
+        self.socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.socket.connect((SERVER_IP, SERVER_PORT))
+        if(self.id == -1):
+            print("NO ID SET")
+        else:
+            print("ID IS SET")
 
     def _set_data(self):
         try:
@@ -39,6 +48,7 @@ class client():
                 datas = file.read().split("\n")
                 self.uname = datas[0]
                 self.id = int(datas[1])
+                self._connection()
         except FileNotFoundError:
             self._new_device()
 

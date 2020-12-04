@@ -3,11 +3,15 @@ import socket
 #From Project
 from client.client import client
 from server.server import server
-
-hostname = socket.gethostname()
-local_ip = socket.gethostbyname(hostname)
+from helper import inp
 
 def start(mode):
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    print("Verwendete IP ist " + local_ip)
+    value = inp("IP ändern [Y/n]", ["Y", "y", "N", "n"]).lower()
+    if(value == "y"):
+        local_ip = input("Neue IP : ")
     if mode == 0:
         print("Server Start")
         s = server(str(local_ip))
@@ -26,5 +30,6 @@ if __name__ == "__main__":
         except Exception:
             print("Bitte geb eine Zahl ein")
             choice = -1
+    start(choice)
 else:
     print("Starte für Consolendbugen")

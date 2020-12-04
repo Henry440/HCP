@@ -1,13 +1,14 @@
 #Libarys
 import socket
 #From Project
-from configs import C_KEY_FILE
+from configs import C_KEY_FILE, SERVER_IP, SERVER_PORT
 from protocol.command import cmd as cmds
 from protocol.worker import network
 
 class client():
 
-    def __init__(self, ip):
+    def __init__(self, ip = "127.0.0.1"):
+        assert isinstance(ip, str), f"IP muss ein str sein gegeben {type(ip)}"
         self.uname = ""
         self.id = -1
         self.ip = ip
@@ -27,7 +28,7 @@ class client():
         print("Dein Username : ")
         self.uname = input("> ")
         self._connection()
-        answer = self._server_request(0, "register", (self.uname, self.ip))
+        answer = self._server_request(0, "register", [self.uname, self.ip])
         #self.id = answer.get_args()[0]
         self.id = 1
         with open(C_KEY_FILE, "a") as file:

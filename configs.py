@@ -2,6 +2,9 @@
 #Client Configs
 C_KEY_FILE = "./client/datas.dat"
 
+#Server Configs
+S_KEY_FILE = "./server/datas.dat"
+
 #Netzwerk Konfiguration
 SERVER_IP = "192.168.1.10"
 SERVER_PORT = 5511

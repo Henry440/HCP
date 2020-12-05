@@ -9,7 +9,7 @@ def start(mode):
     hostname = socket.gethostname()
     local_ip = socket.gethostbyname(hostname)
     print("Verwendete IP ist " + local_ip)
-    value = inp("IP ändern [Y/n]", ["Y", "y", "N", "n"]).lower()
+    value = inp("IP ändern [y/N]", ["Y", "y", "N", "n"]).lower()
     if(value == "y"):
         local_ip = input("Neue IP : ")
     if mode == 0:
